@@ -12,13 +12,29 @@ const students = [
 ];
 
 function sortStudentsByGroups(arr) {
-  let result = [];
-  let size = 3;
-  for (let i = 0; i < arr.length; i += size) {
-    result.push(arr.slice(i, i + size));
+  arr.sort();
+  const a = [],
+    b = [],
+    c = [],
+    rest = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i < 3) {
+      a.push(arr[i]);
+    } else if (i < 6) {
+      b.push(arr[i]);
+    } else if (i < 9) {
+      c.push(arr[i]);
+    } else {
+      rest.push(arr[i]);
+    }
   }
-  return result;
+  return [
+    a,
+    b,
+    c,
+    `Оставшиеся студенты: ${rest.length === 0 ? "-" : rest.join(", ")}`,
+  ];
 }
 
 sortStudentsByGroups(students);
-console.log(sortStudentsByGroups(students));
